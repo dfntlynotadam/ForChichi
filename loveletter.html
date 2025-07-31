@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I Love You 💘</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6ec;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #d6336c;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+    }
+
+    #typewriter {
+      font-size: 1.5em;
+      max-width: 600px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #d6336c;
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      animation: float 5s linear infinite;
+      font-size: 20px;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    details {
+      margin-top: 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+      max-width: 600px;
+    }
+
+    summary {
+      font-weight: bold;
+      font-size: 1.3em;
+    }
+
+    ul {
+      list-style-type: "💗 ";
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    #playButton {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background-color: #d6336c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hi, Chichi! 💖</h1>
+  <div id="typewriter"></div>
+
+  <!-- Clickable Reasons -->
+  <details>
+    <summary>💬 Reasons I Love You</summary>
+    <ul>
+      <li>You always make me laugh (even when I’m stressed).</li>
+      <li>You’re the most supportive person I know.</li>
+      <li>Your smile makes my whole day better.</li>
+      <li>I love how you understand me — even when I’m quiet.</li>
+      <li>Every moment with you feels like home.</li>
+    </ul>
+  </details>
+
+  <!-- Floating Hearts Script -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+      heart.innerText = "❤️";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+  <!-- Typewriter Effect -->
+<script>
+  const message = "Happy National Girlfriend Day! I love you always. 💗";
+  const typewriter = document.getElementById("typewriter");
+  let i = 0;
+
+  function typeEffect() {
+    if (i < message.length) {
+      typewriter.innerHTML += message.charAt(i);
+      i++;
+      setTimeout(typeEffect, 50);
+    } else {
+      // Remove the border after the entire message is typed
+      typewriter.style.borderRight = "none";
+    }
+  }
+
+  window.onload = () => {
+    typewriter.style.borderRight = "2px solid #d6336c"; // Ensure the border is set initially
+    typeEffect();
+  };
+</script>
+
+
+  <!-- Background Music -->
+  <audio id="bgmusic" loop>
+    <source src="this-is-how-you-fall-in-love.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="playButton">Play Music</button>
+
+  <script>
+    const playButton = document.getElementById("playButton");
+    const music = document.getElementById("bgmusic");
+
+    playButton.addEventListener("click", () => {
+      const playPromise = music.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log("Error playing music:", error);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
